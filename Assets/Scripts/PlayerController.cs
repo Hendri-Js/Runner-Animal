@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float jumpForce;
     private Rigidbody2D rb;
-    private bool isGrounded = false;
+    private bool isGrounded;
 
     private void Awake()
     {
