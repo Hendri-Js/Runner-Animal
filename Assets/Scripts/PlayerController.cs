@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce;
     private Rigidbody2D rb;
     private bool isGrounded;
+    private Animator anim;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
 
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        anim.SetBool("JumpTrigger",true);
+        
     }
 
 
@@ -35,6 +39,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            anim.SetBool("JumpTrigger",false);
         }
     }
 
